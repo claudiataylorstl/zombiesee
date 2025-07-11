@@ -2,41 +2,181 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Simple Browser App</title>
+  <title>Terminus Math Solution</title>
   <style>
     body {
-      background-color: #121212;
-      color: #eee;
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
       margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #090446;
     }
-    button {
-      padding: 10px 20px;
-      background-color: #6200ee;
-      border: none;
-      border-radius: 8px;
-      color: white;
-      font-size: 1.2em;
-      cursor: pointer;
-      margin-top: 20px;
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #AFD0D6;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      z-index: 1000;
     }
+
+    
+
     button:hover {
       background-color: #3700b3;
+    }
+
+    section {
+      padding-top: 100px;
+      min-height: 100vh;
+    }
+
+    #section1 {
+      background-color: #AFD0D6;
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .symbol-column {
+      background-color: #C49799;
+      border-radius: 12px;
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 500px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .symbol-column h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .symbol-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      flex-grow: 1;
+    }
+
+    .symbol {
+      background-color: #AFD0D6;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .symbol:hover {
+      background-color: #A5D8FF;
+    }
+
+    .symbol.selected {
+      border-color: #00e676;
+      background-color: #BFB6BB;
+    }
+
+    .answer-box {
+      margin-top: 20px;
+      padding: 1rem;
+      background-color: #1b1b1b;
+      text-align: center;
+      border-radius: 8px;
+      border: 1px dashed #555;
+    }
+
+    #section2 {
+      background-color: #AFD0D6
+      padding: 100px 20px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to Your Browser App!</h1>
-  <button id="clickMeBtn">Click me!</button>
+  <header>
+    <h1>Black Ops 6 Zombies</h1>
+    
+    <h2>Terminus Math Problem Solver</h2>
+  </header>
+
+  <section id="section1">
+    <!-- X COLUMN -->
+    <div class="symbol-column">
+      <h2>Group X</h2>
+      <div class="symbol-buttons" id="groupX">
+        <div class="symbol">X1</div>
+        <div class="symbol">X2</div>
+        <div class="symbol">X3</div>
+        <div class="symbol">X4</div>
+        <div class="symbol">X5</div>
+        <div class="symbol">X6</div>
+      </div>
+      <div class="answer-box" id="answerX">Code 1</div>
+    </div>
+
+    <!-- Y COLUMN -->
+    <div class="symbol-column">
+      <h2>Group Y</h2>
+      <div class="symbol-buttons" id="groupY">
+        <div class="symbol">Y1</div>
+        <div class="symbol">Y2</div>
+        <div class="symbol">Y3</div>
+        <div class="symbol">Y4</div>
+        <div class="symbol">Y5</div>
+        <div class="symbol">Y6</div>
+      </div>
+      <div class="answer-box" id="answerY">Code 2</div>
+    </div>
+
+    <!-- Z COLUMN -->
+    <div class="symbol-column">
+      <h2>Group Z</h2>
+      <div class="symbol-buttons" id="groupZ">
+        <div class="symbol">Z1</div>
+        <div class="symbol">Z2</div>
+        <div class="symbol">Z3</div>
+        <div class="symbol">Z4</div>
+        <div class="symbol">Z5</div>
+        <div class="symbol">Z6</div>
+      </div>
+      <div class="answer-box" id="answerZ">Code 3</div>
+    </div>
+  </section>
+
+  <section id="section2">
+    <h1>Section 2</h1>
+    <p>This area is reserved for what's coming next!</p>
+  </section>
 
   <script>
-    document.getElementById('clickMeBtn').addEventListener('click', () => {
-      alert('Button clicked! 🎉');
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    const symbolGroups = ['groupX', 'groupY', 'groupZ'];
+
+    symbolGroups.forEach(groupId => {
+      const container = document.getElementById(groupId);
+      const groupLetter = groupId.slice(-1).toUpperCase(); // X, Y, Z
+      const answerBox = document.getElementById('answer' + groupLetter);
+
+      container.querySelectorAll('.symbol').forEach(symbol => {
+        symbol.addEventListener('click', () => {
+          container.querySelectorAll('.symbol').forEach(s => s.classList.remove('selected'));
+          symbol.classList.add('selected');
+          answerBox.textContent = `Selected: ${symbol.textContent}`;
+        });
+      });
     });
   </script>
 </body>
