@@ -116,15 +116,52 @@
   color: #19647E; 
   margin: 0;
 }
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
 
-@font-face {
-  font-family: 'MyCustomFont';
-  src: url('assets/fonts/MyCustomFont.woff2') format('woff2'),
-       url('assets/fonts/MyCustomFont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+  .column {
+    width: 100%;
+    min-height: unset;
+  }
+
+  .top-section {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    padding: 10px;
+  }
+
+  .top-section button {
+    width: 100px;
+    height: 100px;
+  }
+
+  .bottom-section {
+    padding: 10px;
+    min-height: 80px;
+  }
+
+  .answer-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .answer-value {
+    font-size: 12vw;
+    word-wrap: break-word;
+  }
+
+  .page-title h1 {
+    font-size: 2rem;
+  }
+
+  .page-title p {
+    font-size: 1rem;
+  }
 }
+
 
 
 
