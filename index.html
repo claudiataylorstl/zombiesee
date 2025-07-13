@@ -1,183 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Terminus Math Solution</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #121212;
-      color: #090446;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Page Layout</title>
+<style>
+  body, html {
+    margin: 0; padding: 0; height: 100%;
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+  }
+  .page-title {
+    text-align: center;
+    padding: 40px 20px 20px 20px;
+    background: #37392E;
+    color: white;
+  }
+  .page-title h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  .page-title p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.85;
+  }
+  .container {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    height: calc(100vh - 140px); /* leave space for title + some padding */
+    box-sizing: border-box;
+  }
+  .column {
+    flex: 1;
+    background: #BFD7EA;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  .top-section {
+    flex: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 5px;
+    /* justify-content: space-around; */
+    align-items: center;
+    justify-items: center;
+    padding: 0px;
+    border-bottom: 1px solid #ddd;
+  }
+  .top-section button {
+    width: 150px;
+    height: 150px;
+    padding: 0;
 
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: #AFD0D6;
-      padding: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      z-index: 1000;
-    }
+    border: 1px solid #aaa;
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  button.selected {
+    outline: 3px solid #19647E; /* or any color from your palette */
+    border-radius: 6px;
+ }
+  
+  
+  .top-section button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .bottom-section {
+  flex:auto;
+  padding: 20px;
+  text-align: center;
+  border-top: 2px solid #ccc;
+  margin-top: 5px;
+  min-height: 100px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-    
+.answer-title {
+  font-weight: bold;
+  font-size: 5.2rem;
+  margin-bottom: 2cqi;
+}
 
-    button:hover {
-      background-color: #3700b3;
-    }
-
-    section {
-      padding-top: 100px;
-      min-height: 100vh;
-    }
-
-    #section1 {
-      background-color: #AFD0D6;
-      display: flex;
-      justify-content: center;
-      padding: 40px;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .symbol-column {
-      background-color: #C49799;
-      border-radius: 12px;
-      width: 300px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 500px;
-      padding: 20px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    }
-
-    .symbol-column h2 {
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    .symbol-buttons {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      flex-grow: 1;
-    }
-
-    .symbol {
-      background-color: #AFD0D6;
-      padding: 1rem;
-      border-radius: 8px;
-      text-align: center;
-      cursor: pointer;
-      border: 2px solid transparent;
-      transition: all 0.2s ease;
-    }
-
-    .symbol:hover {
-      background-color: #A5D8FF;
-    }
-
-    .symbol.selected {
-      border-color: #00e676;
-      background-color: #BFB6BB;
-    }
-
-    .answer-box {
-      margin-top: 20px;
-      padding: 1rem;
-      background-color: #1b1b1b;
-      text-align: center;
-      border-radius: 8px;
-      border: 1px dashed #555;
-    }
-
-    #section2 {
-      background-color: #AFD0D6
-      padding: 100px 20px;
-      text-align: center;
-    }
-  </style>
+.answer-value {
+  font-size: 10.5rem;  
+  font-weight: 900;
+  color: #19647E; 
+  margin: 0;
+}
+</style>
 </head>
 <body>
-  <header>
-    <h1>Black Ops 6 Zombies</h1>
-    
-    <h2>Terminus Math Problem Solver</h2>
-  </header>
 
-  <section id="section1">
-    <!-- X COLUMN -->
-    <div class="symbol-column">
-      <h2>Group X</h2>
-      <div class="symbol-buttons" id="groupX">
-        <div class="symbol">X1</div>
-        <div class="symbol">X2</div>
-        <div class="symbol">X3</div>
-        <div class="symbol">X4</div>
-        <div class="symbol">X5</div>
-        <div class="symbol">X6</div>
+  <div class="page-title">
+    <h1>Black Ops 6 Terminus Math Solution</h1>
+    <p>Terminus Zombies Map.  Select the symbol, get the code.<br>  No need to pay Peck!</p>
+  </div>
+
+  <div class="container">
+    <div class="column">
+      <div class="top-section">
+        <button data-value=0><img src="assets/01.png" alt="" /></button>
+        <button data-value=11><img src="assets/2.png" alt="" /></button>
+        <button data-value=10><img src="assets/03.png" alt="" /></button>
+        <button data-value=22><img src="assets/04.png" alt="" /></button>
+        <button data-value=21><img src="assets/05.png" alt="" /></button>
+        <button data-value=20><img src="assets/06.png" alt="" /></button>
       </div>
-      <div class="answer-box" id="answerX">Code 1</div>
+      <div class="bottom-section">
+        <h3 class="answer-title">Answer 1:</h3>
+        <p class="answer-value" id="answer1">-</p>
+      </div>
     </div>
 
-    <!-- Y COLUMN -->
-    <div class="symbol-column">
-      <h2>Group Y</h2>
-      <div class="symbol-buttons" id="groupY">
-        <div class="symbol">Y1</div>
-        <div class="symbol">Y2</div>
-        <div class="symbol">Y3</div>
-        <div class="symbol">Y4</div>
-        <div class="symbol">Y5</div>
-        <div class="symbol">Y6</div>
+    <div class="column">
+      <div class="top-section">
+        <button data-value=0><img src="assets/01.png" alt="" /></button>
+        <button data-value=11><img src="assets/2.png" alt="" /></button>
+        <button data-value=10><img src="assets/03.png" alt="" /></button>
+        <button data-value=22><img src="assets/04.png" alt="" /></button>
+        <button data-value=21><img src="assets/05.png" alt="" /></button>
+        <button data-value=20><img src="assets/06.png" alt="" /></button>
       </div>
-      <div class="answer-box" id="answerY">Code 2</div>
+      <div class="bottom-section">
+        <h3 class="answer-title">Answer 2:</h3>
+        <p class="answer-value" id="answer2">-</p>
+      </div>
     </div>
 
-    <!-- Z COLUMN -->
-    <div class="symbol-column">
-      <h2>Group Z</h2>
-      <div class="symbol-buttons" id="groupZ">
-        <div class="symbol">Z1</div>
-        <div class="symbol">Z2</div>
-        <div class="symbol">Z3</div>
-        <div class="symbol">Z4</div>
-        <div class="symbol">Z5</div>
-        <div class="symbol">Z6</div>
+    <div class="column">
+      <div class="top-section">
+        <button data-value=0><img src="assets/01.png" alt="" /></button>
+        <button data-value=11><img src="assets/2.png" alt="" /></button>
+        <button data-value=10><img src="assets/03.png" alt="" /></button>
+        <button data-value=22><img src="assets/04.png" alt="" /></button>
+        <button data-value=21><img src="assets/05.png" alt="" /></button>
+        <button data-value=20><img src="assets/06.png" alt="" /></button>
       </div>
-      <div class="answer-box" id="answerZ">Code 3</div>
+      <div class="bottom-section">
+        <h3 class="answer-title">Answer 3:</h3>
+        <p class="answer-value" id="answer3">-</p>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <section id="section2">
-    <h1>Section 2</h1>
-    <p>This area is reserved for what's coming next!</p>
-  </section>
 
   <script>
-    function scrollToSection(id) {
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    }
+  const columns = document.querySelectorAll('.top-section');
 
-    const symbolGroups = ['groupX', 'groupY', 'groupZ'];
+  columns.forEach((column, colIndex) => {
+    const buttons = column.querySelectorAll('button');
 
-    symbolGroups.forEach(groupId => {
-      const container = document.getElementById(groupId);
-      const groupLetter = groupId.slice(-1).toUpperCase(); // X, Y, Z
-      const answerBox = document.getElementById('answer' + groupLetter);
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        // Remove .selected from all buttons in this column
+        buttons.forEach(btn => btn.classList.remove('selected'));
 
-      container.querySelectorAll('.symbol').forEach(symbol => {
-        symbol.addEventListener('click', () => {
-          container.querySelectorAll('.symbol').forEach(s => s.classList.remove('selected'));
-          symbol.classList.add('selected');
-          answerBox.textContent = `Selected: ${symbol.textContent}`;
-        });
+        // Highlight clicked button
+        button.classList.add('selected');
+
+        // Get the number tied to the button
+        const value = parseInt(button.getAttribute('data-value'));
+
+        // Store it wherever you want — here's an example:
+        storeSelectedValue(colIndex, value);
       });
     });
-  </script>
+  });
+
+  // Store values for each column (index 0, 1, 2)
+  const selectedValues = [null, null, null];
+
+  function storeSelectedValue(columnIndex, value) {
+    selectedValues[columnIndex] = value;
+    console.log('Selected values:', selectedValues);
+
+    // If all 3 are selected, you can do something with them:
+    if (selectedValues.every(val => val !== null)) {
+      const result1 = runFormula1(selectedValues);
+      const result2 = runFormula2(selectedValues);
+      const result3 = runFormula3(selectedValues);
+
+      document.getElementById('answer1').textContent = result1;
+      document.getElementById('answer2').textContent = result2;
+      document.getElementById('answer3').textContent = result3;
+
+
+      console.log('Result of formula:', result1, result2, result3);
+      // You can display it wherever you want here
+    }
+  }
+
+  function runFormula1(value) {
+    // Example formula: sum of all selected values
+    return 2 * (value[0]) + 11;
+  }
+
+  function runFormula2(value) {
+
+    return (2 * value[2] + value[1]) - 5;
+  }
+
+  function runFormula3(value) {
+
+    return Math.abs((value[1] + value[2]) - value[0]);
+  }
+
+
+</script>
+
+
+
+
+
+
+
+
 </body>
 </html>
+
+
